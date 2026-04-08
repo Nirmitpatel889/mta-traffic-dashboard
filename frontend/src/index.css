@@ -1,0 +1,374 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  /* MTA Brand Colors */
+  --mta-blue: #0A66C2;
+  --mta-blue-light: #4A90E2;
+  --mta-orange: #FF6B00;
+  --mta-orange-light: #FF9500;
+
+  /* Premium Light Glass System */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.5);
+  --accent: #0A66C2;
+  --accent-glow: rgba(10, 102, 194, 0.35);
+  --success: #00BA5E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --text-primary: #111827;
+  --text-secondary: rgba(17, 24, 39, 0.65);
+  --surface-dark: #f8f9fc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--surface-dark);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.leaflet-container {
+  background: var(--surface-dark) !important;
+  width: 100%;
+  height: 100%;
+}
+
+/* Maps shouldn't be inverted in light mode */
+.leaflet-tile-pane {
+  filter: none;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-control-zoom a {
+  background: var(--glass-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  font-size: 18px !important;
+  transition: background 0.2s ease;
+}
+
+.leaflet-control-zoom a:hover {
+  background: rgba(20, 24, 40, 0.9) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: rgba(255, 255, 255, 0.3) !important;
+  font-size: 9px !important;
+  backdrop-filter: blur(8px) !important;
+  border: none !important;
+}
+
+.leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ── Custom pulsing GPS marker ── */
+.pulse-marker {
+  position: relative;
+  width: 26px;
+  height: 26px;
+}
+
+.pulse-marker__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, var(--mta-blue), var(--mta-blue-light));
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 12px var(--accent-glow),
+    0 0 30px var(--accent-glow);
+  z-index: 2;
+}
+
+.pulse-marker__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid var(--mta-blue);
+  opacity: 0;
+  animation: pulse-ring 2s cubic-bezier(0.21, 0.6, 0.35, 1) infinite;
+  z-index: 1;
+}
+
+.pulse-marker__ring--delayed {
+  animation-delay: 0.65s;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+/* ── Accuracy circle ── */
+.accuracy-circle {
+  background: rgba(0, 57, 166, 0.06);
+  border: 1px solid rgba(0, 57, 166, 0.15);
+  border-radius: 50%;
+}
+
+/* ── Glass panels ── */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(36px) saturate(1.8);
+  -webkit-backdrop-filter: blur(36px) saturate(1.8);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5),
+    inset 0 1px 1px var(--glass-highlight);
+  color: var(--text-primary);
+}
+
+.glass-panel-sm {
+  background: rgba(245, 247, 250, 0.85);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px var(--glass-highlight);
+}
+
+/* ── Facility Markers ── */
+.facility-marker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 6px 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+  width: max-content;
+  transform: translate(-50%, -50%);
+}
+
+.facility-marker:hover {
+  transform: translate(-50%, -50%) scale(1.08) translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.facility-marker__icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.facility-marker__label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.facility-marker__risk {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--text-primary);
+  padding: 2px 5px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+}
+
+/* High-risk facility pulse */
+.facility-marker--high {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: linear-gradient(135deg, rgba(255, 250, 250, 0.95), rgba(255, 240, 245, 0.95));
+  animation: facility-glow 2s ease-in-out infinite;
+}
+
+@keyframes facility-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.25), 0 0 20px rgba(239, 68, 68, 0.1);
+  }
+}
+
+/* Moderate risk marker */
+.facility-marker--moderate {
+  border-color: rgba(255, 214, 0, 0.15);
+}
+
+/* Low risk marker */
+.facility-marker--low {
+  border-color: rgba(0, 230, 118, 0.1);
+}
+
+/* ── Facility pulse animation on map ── */
+.facility-pulse {
+  animation: map-pulse 2s ease-in-out infinite;
+}
+
+@keyframes map-pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Speed color classes ── */
+.speed-idle {
+  color: var(--text-secondary);
+}
+
+.speed-slow {
+  color: var(--success);
+}
+
+.speed-medium {
+  color: var(--warning);
+}
+
+.speed-fast {
+  color: var(--danger);
+}
+
+/* ── Loading shimmer ── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.03) 25%,
+      rgba(0, 0, 0, 0.08) 50%,
+      rgba(0, 0, 0, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 8px;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .glass-panel {
+    border-radius: 16px;
+  }
+
+  #dashboard-control {
+    width: calc(100vw - 1rem) !important;
+    max-width: none !important;
+    left: 0.5rem !important;
+    top: 0.5rem !important;
+    padding: 1rem !important;
+  }
+
+  #predictions-panel,
+  #routing-panel,
+  #compare-panel {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 60vh !important;
+    border-radius: 20px 20px 0 0 !important;
+  }
+}
+
+/* ── Leaflet popup overrides ── */
+.leaflet-popup-content-wrapper {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  color: var(--text-primary) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.leaflet-popup-close-button {
+  color: rgba(0, 0, 0, 0.4) !important;
+}

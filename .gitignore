@@ -1,0 +1,34 @@
+# Environment
+.venv/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large Data Files (Exceeds GitHub 100MB limit)
+mta_combined.csv
+mta_hourly_crossings_clean.csv
+*.csv
+
+# Exceptions for required model files
+!capacity_risk_ranking.csv
+!cv_results.csv
+!feature_importance.csv
+!forecast_combined.csv
+!model_features.csv
+!model_results_summary.csv
+!predictions_sample.csv
+
+# Optional: Ignore the model file if you don't want it in version control
+# xgboost_model.pkl
+
+# IDE / OS
+.vscode/
+.DS_Store
+workspace.code-workspace
+
+# Frontend Node Modules
+frontend/node_modules/
+frontend/dist/

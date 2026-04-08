@@ -1,0 +1,14 @@
+feature
+hour
+hour_squared
+facility_encoded
+vehicle_encoded
+vehicle_desc_encoded
+day_encoded
+is_weekend
+direction_encoded
+payment_encoded
+month
+season_num
+day_of_month
+year

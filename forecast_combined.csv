@@ -1,0 +1,101 @@
+facility,year,annual_total,avg_hourly,data_type,note
+Bronx - Whitestone Bridge,2019,2824415,99.41622668,Historical,
+Bronx - Whitestone Bridge,2020,1939342,63.51002096,Historical,
+Bronx - Whitestone Bridge,2021,2205557,91.42205181,Historical,
+Bronx - Whitestone Bridge,2022,2444829,105.1042088,Historical,
+Bronx - Whitestone Bridge,2023,2404413,105.2121385,Historical,
+Bronx - Whitestone Bridge,2024,2477402,111.3789507,Historical,
+Bronx - Whitestone Bridge,2025,1662314,114.8800276,Historical,Partial year — Jan-Apr 2025 only
+Cross Bay Bridge,2019,137459,26.63417942,Historical,
+Cross Bay Bridge,2020,104747,20.13978081,Historical,
+Cross Bay Bridge,2021,118487,23.42566232,Historical,
+Cross Bay Bridge,2022,117304,22.83956386,Historical,
+Cross Bay Bridge,2023,112078,22.80325534,Historical,
+Cross Bay Bridge,2024,112554,23.50261015,Historical,
+Cross Bay Bridge,2025,110789,24.13703704,Historical,Partial year — Jan-Apr 2025 only
+Henry Hudson Bridge,2019,302289,92.55633803,Historical,
+Henry Hudson Bridge,2020,146624,52.01277049,Historical,
+Henry Hudson Bridge,2021,202958,75.70234987,Historical,
+Henry Hudson Bridge,2022,256590,90,Historical,
+Henry Hudson Bridge,2023,266952,92.53102253,Historical,
+Henry Hudson Bridge,2024,248615,84.59169786,Historical,
+Henry Hudson Bridge,2025,247375,83.68572395,Historical,Partial year — Jan-Apr 2025 only
+Hugh L. Carey Tunnel,2019,313394,88.35466591,Historical,
+Hugh L. Carey Tunnel,2020,133249,37.73690173,Historical,
+Hugh L. Carey Tunnel,2021,223628,62.7992137,Historical,
+Hugh L. Carey Tunnel,2022,330852,89.27468969,Historical,
+Hugh L. Carey Tunnel,2023,380839,98.53531695,Historical,
+Hugh L. Carey Tunnel,2024,379079,96.04231062,Historical,
+Hugh L. Carey Tunnel,2025,360631,94.72839506,Historical,Partial year — Jan-Apr 2025 only
+Marine Parkway Bridge,2019,92218,25.56639867,Historical,
+Marine Parkway Bridge,2020,73433,20.20720969,Historical,
+Marine Parkway Bridge,2021,80394,24.01971915,Historical,
+Marine Parkway Bridge,2022,86107,24.42751773,Historical,
+Marine Parkway Bridge,2023,86902,25.53687922,Historical,
+Marine Parkway Bridge,2024,88920,25.27572484,Historical,
+Marine Parkway Bridge,2025,87517,24.56272804,Historical,Partial year — Jan-Apr 2025 only
+Queens Midtown Tunnel,2019,762130,142.055918,Historical,
+Queens Midtown Tunnel,2020,301117,57.26835299,Historical,
+Queens Midtown Tunnel,2021,488388,95.0911215,Historical,
+Queens Midtown Tunnel,2022,740277,139.9653999,Historical,
+Queens Midtown Tunnel,2023,759355,136.4274165,Historical,
+Queens Midtown Tunnel,2024,785666,138.7612151,Historical,
+Queens Midtown Tunnel,2025,815190,141.5260417,Historical,Partial year — Jan-Apr 2025 only
+Robert F. Kennedy Bridge Bronx,2019,1561605,85.48308518,Historical,
+Robert F. Kennedy Bridge Bronx,2020,939415,52.08555112,Historical,
+Robert F. Kennedy Bridge Bronx,2021,1235510,73.5422619,Historical,
+Robert F. Kennedy Bridge Bronx,2022,1466130,88.04527985,Historical,
+Robert F. Kennedy Bridge Bronx,2023,1585942,94.68310448,Historical,
+Robert F. Kennedy Bridge Bronx,2024,1655793,95.07309371,Historical,
+Robert F. Kennedy Bridge Bronx,2025,1673704,95.83737975,Historical,Partial year — Jan-Apr 2025 only
+Robert F. Kennedy Bridge Manhattan,2019,469116,81.14789829,Historical,
+Robert F. Kennedy Bridge Manhattan,2020,267569,48.88890919,Historical,
+Robert F. Kennedy Bridge Manhattan,2021,332844,72.2945265,Historical,
+Robert F. Kennedy Bridge Manhattan,2022,414834,86.4417587,Historical,
+Robert F. Kennedy Bridge Manhattan,2023,437815,86.83359778,Historical,
+Robert F. Kennedy Bridge Manhattan,2024,484690,91.2959126,Historical,
+Robert F. Kennedy Bridge Manhattan,2025,467219,85.72825688,Historical,Partial year — Jan-Apr 2025 only
+Throgs Neck Bridge,2019,694803,71.44503856,Historical,
+Throgs Neck Bridge,2020,450117,47.06367629,Historical,
+Throgs Neck Bridge,2021,571842,58.86781964,Historical,
+Throgs Neck Bridge,2022,613770,65.05935976,Historical,
+Throgs Neck Bridge,2023,773972,81.73745908,Historical,
+Throgs Neck Bridge,2024,818959,87.03071201,Historical,
+Throgs Neck Bridge,2025,796298,84.65851584,Historical,Partial year — Jan-Apr 2025 only
+Verrazzano - Narrows Bridge,2019,890368,152.6170723,Historical,
+Verrazzano - Narrows Bridge,2020,652743,104.3720819,Historical,
+Verrazzano - Narrows Bridge,2021,1425438,120.5954315,Historical,
+Verrazzano - Narrows Bridge,2022,1555972,134.5880114,Historical,
+Verrazzano - Narrows Bridge,2023,1680159,146.7259628,Historical,
+Verrazzano - Narrows Bridge,2024,1692032,155.6463987,Historical,
+Verrazzano - Narrows Bridge,2025,1623099,152.004027,Historical,Partial year — Jan-Apr 2025 only
+Bronx - Whitestone Bridge,2026,1021066,116.56,Forecast,XGBoost forecast
+Bronx - Whitestone Bridge,2027,1044542,119.24,Forecast,XGBoost forecast
+Bronx - Whitestone Bridge,2028,1068545,121.98,Forecast,XGBoost forecast
+Cross Bay Bridge,2026,195874,22.36,Forecast,XGBoost forecast
+Cross Bay Bridge,2027,190968,21.8,Forecast,XGBoost forecast
+Cross Bay Bridge,2028,186238,21.26,Forecast,XGBoost forecast
+Henry Hudson Bridge,2026,714816,81.6,Forecast,XGBoost forecast
+Henry Hudson Bridge,2027,702026,80.14,Forecast,XGBoost forecast
+Henry Hudson Bridge,2028,689500,78.71,Forecast,XGBoost forecast
+Hugh L. Carey Tunnel,2026,869868,99.3,Forecast,XGBoost forecast
+Hugh L. Carey Tunnel,2027,884497,100.97,Forecast,XGBoost forecast
+Hugh L. Carey Tunnel,2028,899389,102.67,Forecast,XGBoost forecast
+Marine Parkway Bridge,2026,220402,25.16,Forecast,XGBoost forecast
+Marine Parkway Bridge,2027,219876,25.1,Forecast,XGBoost forecast
+Marine Parkway Bridge,2028,219438,25.05,Forecast,XGBoost forecast
+Queens Midtown Tunnel,2026,1204237,137.47,Forecast,XGBoost forecast
+Queens Midtown Tunnel,2027,1198543,136.82,Forecast,XGBoost forecast
+Queens Midtown Tunnel,2028,1192937,136.18,Forecast,XGBoost forecast
+Robert F. Kennedy Bridge Bronx,2026,868992,99.2,Forecast,XGBoost forecast
+Robert F. Kennedy Bridge Bronx,2027,887738,101.34,Forecast,XGBoost forecast
+Robert F. Kennedy Bridge Bronx,2028,906748,103.51,Forecast,XGBoost forecast
+Robert F. Kennedy Bridge Manhattan,2026,838332,95.7,Forecast,XGBoost forecast
+Robert F. Kennedy Bridge Manhattan,2027,858392,97.99,Forecast,XGBoost forecast
+Robert F. Kennedy Bridge Manhattan,2028,878803,100.32,Forecast,XGBoost forecast
+Throgs Neck Bridge,2026,825017,94.18,Forecast,XGBoost forecast
+Throgs Neck Bridge,2027,858217,97.97,Forecast,XGBoost forecast
+Throgs Neck Bridge,2028,892819,101.92,Forecast,XGBoost forecast
+Verrazzano - Narrows Bridge,2026,1374269,156.88,Forecast,XGBoost forecast
+Verrazzano - Narrows Bridge,2027,1379612,157.49,Forecast,XGBoost forecast
+Verrazzano - Narrows Bridge,2028,1385044,158.11,Forecast,XGBoost forecast

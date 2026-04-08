@@ -1,0 +1,14 @@
+Feature,Feature_Code,Importance,Importance_Pct,Rank
+Vehicle Type,vehicle_desc_encoded,0.37539807,37.54,1
+Payment Method,payment_encoded,0.14944339,14.94,2
+Facility,facility_encoded,0.12684363,12.68,3
+Vehicle Category,vehicle_encoded,0.09085927,9.09,4
+Hour Squared,hour_squared,0.08665927,8.67,5
+Hour of Day,hour,0.064760774,6.48,6
+Direction,direction_encoded,0.043554902,4.36,7
+Year,year,0.014133007,1.41,8
+Is Weekend,is_weekend,0.014108993,1.41,9
+Month,month,0.013701682,1.37,10
+Day of Month,day_of_month,0.007715304,0.77,11
+Season,season_num,0.006552468,0.66,12
+Day of Week,day_encoded,0.006269317,0.63,13
