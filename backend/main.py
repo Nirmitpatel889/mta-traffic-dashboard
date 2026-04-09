@@ -24,18 +24,22 @@ import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 # ─── Paths ────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent  # …/Site
-MODEL_PATH = BASE_DIR / "xgboost_model.pkl"
-RISK_CSV = BASE_DIR / "capacity_risk_ranking.csv"
-FORECAST_CSV = BASE_DIR / "forecast_combined.csv"
-FEATURE_IMPORTANCE_CSV = BASE_DIR / "feature_importance.csv"
-MODEL_RESULTS_CSV = BASE_DIR / "model_results_summary.csv"
-MODEL_FEATURES_CSV = BASE_DIR / "model_features.csv"
-CV_RESULTS_CSV = BASE_DIR / "cv_results.csv"
-PREDICTIONS_SAMPLE_CSV = BASE_DIR / "predictions_sample.csv"
+DATA_DIR = Path(__file__).resolve().parent         # …/Site/backend
+
+MODEL_PATH = DATA_DIR / "xgboost_model.pkl"
+RISK_CSV = DATA_DIR / "capacity_risk_ranking.csv"
+FORECAST_CSV = DATA_DIR / "forecast_combined.csv"
+FEATURE_IMPORTANCE_CSV = DATA_DIR / "feature_importance.csv"
+MODEL_RESULTS_CSV = DATA_DIR / "model_results_summary.csv"
+MODEL_FEATURES_CSV = DATA_DIR / "model_features.csv"
+CV_RESULTS_CSV = DATA_DIR / "cv_results.csv"
+PREDICTIONS_SAMPLE_CSV = DATA_DIR / "predictions_sample.csv"
 
 # ─── FastAPI app ──────────────────────────────────────────────────────────────
 app = FastAPI(
@@ -387,7 +391,7 @@ class CrossValidationResponse(BaseModel):
 
 # ─── ENDPOINTS ────────────────────────────────────────────────────────────────
 
-@app.get("/")
+@app.get("/api")
 async def root():
     return {
         "service": "MTA Traffic Intelligence API",
@@ -659,6 +663,23 @@ async def health():
         "timestamp": datetime.now().isoformat(),
     }
 
+
+# ─── Serve React Frontend ─────────────────────────────────────────────────────
+dist_path = BASE_DIR / "frontend" / "dist"
+if dist_path.exists():
+    app.mount("/assets", StaticFiles(directory=str(dist_path / "assets")), name="assets")
+
+@app.get("/{catchall:path}")
+async def serve_react_app(catchall: str):
+    """Serve the React application for any unknown routes."""
+    if not dist_path.exists():
+        return {"error": "Frontend build not found. Run 'npm run build' in the frontend directory first!"}
+    
+    file_path = dist_path / catchall
+    if file_path.is_file():
+        return FileResponse(file_path)
+    
+    return FileResponse(dist_path / "index.html")
 
 # ─── Run with: uvicorn main:app --reload ─────────────────────────────────────
 if __name__ == "__main__":
