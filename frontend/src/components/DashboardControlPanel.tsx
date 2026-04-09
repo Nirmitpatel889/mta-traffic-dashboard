@@ -194,7 +194,7 @@ export default function DashboardControlPanel({
             whileTap={{ scale: 0.98 }}
           >
             {btn.icon}
-            {btn.label}
+            <span className="nav-label">{btn.label}</span>
             {activePanel === btn.id && (
               <motion.div
                 className="ml-auto w-1.5 h-1.5 rounded-full"

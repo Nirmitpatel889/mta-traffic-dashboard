@@ -26,14 +26,16 @@ export default function ComparePanel({ facilities, distances, onClose }: Compare
 
   const selected = facilities.filter((f) => selectedIds.includes(f.facility_id));
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   return (
     <motion.div
       id="compare-panel"
-      className="glass-panel absolute top-4 right-4 z-[1000] w-[420px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] flex flex-col"
-      initial={{ x: 80, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 80, opacity: 0 }}
-      transition={{ type: 'spring', stiffness: 200, damping: 24 }}
+      className="glass-panel absolute top-4 right-4 z-[1000] w-[420px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] flex flex-col md:max-h-[calc(100vh-2rem)]"
+      initial={isMobile ? { y: '100%', opacity: 0 } : { x: 80, opacity: 0 }}
+      animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
+      exit={isMobile ? { y: '100%', opacity: 0 } : { x: 80, opacity: 0 }}
+      transition={{ type: 'spring', stiffness: 220, damping: 28 }}
     >
       {/* Header */}
       <div className="flex items-center justify-between p-5 pb-3">

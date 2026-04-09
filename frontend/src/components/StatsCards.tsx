@@ -72,13 +72,13 @@ export default function StatsCards({
   ];
 
   return (
-    <div className="absolute bottom-4 left-4 right-4 z-[999]">
+    <div id="stats-container" className="absolute bottom-4 left-4 right-4 z-[999]">
       <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
         <AnimatePresence>
           {cards.map((card, i) => (
             <motion.div
               key={card.id}
-              className="glass-panel-sm flex-shrink-0 p-3 min-w-[155px] max-w-[200px]"
+              className="glass-panel-sm stats-card flex-shrink-0 p-3 min-w-[155px] max-w-[200px]"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: i * 0.08, type: 'spring', stiffness: 200, damping: 20 }}

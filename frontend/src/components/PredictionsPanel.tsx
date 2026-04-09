@@ -16,17 +16,18 @@ export default function PredictionsPanel({
   onSelectFacility,
   onClose,
 }: PredictionsPanelProps) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const selected = facilities.find((f) => f.facility_id === selectedFacility);
 
   return (
     <motion.div
-      id="predictions-panel"
-      className="glass-panel absolute top-4 right-4 z-[1000] w-[380px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] flex flex-col"
-      initial={{ x: 80, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 80, opacity: 0 }}
-      transition={{ type: 'spring', stiffness: 200, damping: 24 }}
-    >
+        id="predictions-panel"
+        className="glass-panel absolute top-4 right-4 z-[1000] w-[380px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] flex flex-col md:max-h-[calc(100vh-2rem)]"
+        initial={isMobile ? { y: '100%', opacity: 0 } : { x: 80, opacity: 0 }}
+        animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
+        exit={isMobile ? { y: '100%', opacity: 0 } : { x: 80, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 220, damping: 28 }}
+      >
       {/* Header */}
       <div className="flex items-center justify-between p-5 pb-3">
         <div className="flex items-center gap-2.5">

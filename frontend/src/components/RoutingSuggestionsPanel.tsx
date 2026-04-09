@@ -68,14 +68,16 @@ export default function RoutingSuggestionsPanel({
   const fastest = scored[0];
   const alternatives = scored.slice(1, 4);
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   return (
     <motion.div
       id="routing-panel"
-      className="glass-panel absolute top-4 right-4 z-[1000] w-[380px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] overflow-y-auto p-5"
-      initial={{ x: 80, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 80, opacity: 0 }}
-      transition={{ type: 'spring', stiffness: 200, damping: 24 }}
+      className="glass-panel absolute top-4 right-4 z-[1000] w-[380px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] overflow-y-auto p-5 md:max-h-[calc(100vh-2rem)]"
+      initial={isMobile ? { y: '100%', opacity: 0 } : { x: 80, opacity: 0 }}
+      animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
+      exit={isMobile ? { y: '100%', opacity: 0 } : { x: 80, opacity: 0 }}
+      transition={{ type: 'spring', stiffness: 220, damping: 28 }}
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4">

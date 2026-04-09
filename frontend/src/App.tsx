@@ -144,7 +144,7 @@ export default function App() {
   const visibleError = error && error !== dismissedError ? error : null;
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-[100dvh] overflow-hidden">
       <RealTimeUpdatesFeed facilities={facilities} />
       
       {/* Map container */}
