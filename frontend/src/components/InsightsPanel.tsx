@@ -22,12 +22,12 @@ export default function InsightsPanel({ onClose }: { onClose: () => void }) {
     // Attempt to fetch from real backend, fallback to rich mock data
     const loadData = async () => {
       try {
-        const featureRes = await fetch('http://localhost:8000/api/feature-importance');
+        const featureRes = await fetch('/api/feature-importance');
         if (!featureRes.ok) throw new Error('Fallback to mock');
         const fData = await featureRes.json();
         setFeatures(fData.features.slice(0, 5));
         
-        const forecastRes = await fetch('http://localhost:8000/api/forecasts');
+        const forecastRes = await fetch('/api/forecasts');
         if (!forecastRes.ok) throw new Error('Fallback to mock');
         const pData = await forecastRes.json();
         setForecasts(pData.forecasts);

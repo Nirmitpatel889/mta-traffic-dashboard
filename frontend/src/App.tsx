@@ -93,7 +93,7 @@ export default function App() {
     return {
       nearestFacility: nearest,
       nearestDistance: minDist,
-      nearestEta: distances.get(nearest ? nearest.facility_id : '')?.eta ?? 0,
+      nearestEta: distances.get(nearest?.facility_id ?? '')?.eta ?? 0,
     };
   }, [currentPosition, facilities, distances]);
 
